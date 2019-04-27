@@ -1,21 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
+    <meta charset="utf-8">
+    <title>Single AJAX</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    <div id='map' style='width: 400px; height: 300px;'></div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4" align="center">TRIPPi</h1>
+            <form id="citytext" class="form-inline my-2 my-lg-0">
+                <input id="city-search" class="form-control mr-sm-2" type="search" placeholder="City?" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="city-click">Search</button>
+        </div>
+
+        This section is for Restaurants
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">FOODi</span>
+        </nav>
+
+        <div class="row">
+            <div class="card" style="width: 20%;">
+                <div class="card-body">
+                    <h1 id="businessName1" class="card-title"></h1>
+                    </h1>
+                    <p id="phoneNumber1" class="card-subtitle mb-2 text-muted"></p>
+                    <p id="address1" class="card-text"></p>
+                    <p id="rating1" class="card-text"></p>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+            <div class="card" style="width: 20%;">
+                <div class="card-body">
+                    <h1 id="businessName2" class="card-title"></h1>
+                    <p id="phoneNumber2" class="card-subtitle mb-2 text-muted"></p>
+                    <p id="address2"></p>
+                    <p id="rating2"></p>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+
+            <div class="card" style="width: 20%;">
+                <div class="card-body">
+                    <h1 id="businessName3" class="card-title"></h1>
+                    <p id="phoneNumber3" class="card-subtitle mb-2 text-muted"></p>
+                    <p id="address3"></p>
+                    <p id="rating3"></p>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+
+            <div class="card" style="width: 20%;">
+                <div class="card-body">
+                    <h1 id="businessName4" class="card-title"></h1>
+                    <p id="phoneNumber4" class="card-subtitle mb-2 text-muted"></p>
+                    <p id="address4"></p>
+                    <p id="rating4"></p>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+
+            <div class="card" style="width: 20%;">
+                <div class="card-body">
+                    <h1 id="businessName5" class="card-title"></h1>
+                    <p id="phoneNumber5" class="card-subtitle mb-2 text-muted"></p>
+                    <p id="address5"></p>
+                    <p id="rating5"></p>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    This section is for events
+    <div class="container">
+        <!-- ID's for these are:
+businessEvent -->
+
+        <nav class="navbar navbar-light bg-light">
+            <span class="navbar-brand mb-0 h1">FOODi</span>
+        </nav>
+
+        <div class="row">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h1 id="businessEvent1" class="card-title"></h1>
+                    </h1>
+
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h1 id="businessEvent2" class="card-title"></h1>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h1 id="businessEvent3" class="card-title"></h1>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h1 id="businessEvent4" class="card-title"></h1>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h1 id="businessEvent5" class="card-title"></h1>
+                    <img id=""><img src=""></img>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous"></script>
     <script>
-        mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
-        var map = new mapboxgl.Map({
-            container: 'map',
-            style: 'mapbox://styles/mapbox/streets-v9'
+        var cityInput = ""
+        var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-chloe&location=" + cityInput;
+        // var myurlEvent = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/events/search?term=by-chloe&location=" + cityInput;
+
+        $("#city-click").on("click", function (event) {
+            cityInput = $("#city-search").val()
+            console.log($("#city-search").val());
+            event.preventDefault();
+            var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-chloe&location=" + cityInput;
+
+            $.ajax({
+                url: myurl,
+                headers: {
+                    'Authorization': 'Bearer BMqPeh9LSaDcy2Ynzrlg9b3Pg-zqx7NkPeU6d042djt_xHyFXUHMMftzKLTkw_ftN-_m3GRnBIxeyfvo_U9wHH1WRcYx0LsH6TMMMtyyqgp77l_raGrlydIVQUzBXHYx',
+                },
+                method: 'GET',
+                dataType: 'json',
+                success: function (response) {
+                    console.log(response);
+                    var address1 = response.businesses[0].location.address1 + ", " + response.businesses[0].location.city + ", " + response.businesses[0].location.state + " " + response.businesses[0].location.zip_code;
+                    var address2 = response.businesses[1].location.address1 + ", " + response.businesses[1].location.city + ", " + response.businesses[1].location.state + " " + response.businesses[1].location.zip_code;
+                    var address3 = response.businesses[2].location.address1 + ", " + response.businesses[2].location.city + ", " + response.businesses[2].location.state + " " + response.businesses[2].location.zip_code;
+                    var address4 = response.businesses[3].location.address1 + ", " + response.businesses[3].location.city + ", " + response.businesses[3].location.state + " " + response.businesses[3].location.zip_code;
+                    var address5 = response.businesses[4].location.address1 + ", " + response.businesses[4].location.city + ", " + response.businesses[4].location.state + " " + response.businesses[4].location.zip_code;
+
+                    $("#businessName1").text(response.businesses[0].name);
+                    $("#phoneNumber1").text(response.businesses[0].phone);
+                    $("#address1").text(address1);
+                    $("#rating1").text("Business is Rated: " + response.businesses[0].rating);
+
+                    $("#businessName2").text(response.businesses[1].name);
+                    $("#phoneNumber2").text(response.businesses[1].phone);
+                    $("#address2").text(address2);
+                    $("#rating2").text("Business is Rated: " + response.businesses[1].rating);
+
+                    $("#businessName3").text(response.businesses[2].name);
+                    $("#phoneNumber3").text(response.businesses[2].phone);
+                    $("#address3").text(address3);
+                    $("#rating3").text("Business is Rated: " + response.businesses[2].rating);
+
+                    $("#businessName4").text(response.businesses[3].name);
+                    $("#phoneNumber4").text(response.businesses[3].phone);
+                    $("#address4").text(address4);
+                    $("#rating4").text("Business is Rated: " + response.businesses[3].rating);
+
+                    $("#businessName5").text(response.businesses[4].name);
+                    $("#phoneNumber5").text(response.businesses[4].phone);
+                    $("#address5").text(address5);
+                    $("#rating5").text("Business is Rated: " + response.businesses[4].rating);
+
+                }
+            });
+
+
         });
+
+
+
+
     </script>
+
 </body>
+
 </html>
