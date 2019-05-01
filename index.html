@@ -8,12 +8,14 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
+        <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <div class="container">
         <div class="jumbotron">
             <h1 class="display-4" align="center">TRIPPi</h1>
+            <p align="center">Your Quick Reference Travel Companion!</p>
             <form id="citytext" class="form-inline my-2 my-lg-0">
                 <input id="city-search" class="form-control mr-sm-2" type="search" placeholder="City?"
                     aria-label="Search">
@@ -21,16 +23,16 @@
         </div>
         <div id='map' style='width: 400px; height: 300px;'></div>
 
-        This section is for Restaurants
+        <!-- This section is for Restaurants -->
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">FOODi</span>
+            <span class="navbar-brand mb-0 h1">FOODi - Top 5 Restaurants from Yelp!</span>
         </nav>
 
         <div class="row">
             <div class="card" style="width: 20%;">
                 <div class="card-body">
-                    <h1 id="businessName1" class="card-title"></h1>
-                    </h1>
+                    <h4 id="businessName1" class="card-title"></h4>
+                    </h4>
                     <p id="phoneNumber1" class="card-subtitle mb-2 text-muted"></p>
                     <p id="address1" class="card-text"></p>
                     <p id="rating1" class="card-text"></p>
@@ -39,7 +41,7 @@
             </div>
             <div class="card" style="width: 20%;">
                 <div class="card-body">
-                    <h1 id="businessName2" class="card-title"></h1>
+                    <h4 id="businessName2" class="card-title"></h4>
                     <p id="phoneNumber2" class="card-subtitle mb-2 text-muted"></p>
                     <p id="address2"></p>
                     <p id="rating2"></p>
@@ -49,7 +51,7 @@
 
             <div class="card" style="width: 20%;">
                 <div class="card-body">
-                    <h1 id="businessName3" class="card-title"></h1>
+                    <h4 id="businessName3" class="card-title"></h4>
                     <p id="phoneNumber3" class="card-subtitle mb-2 text-muted"></p>
                     <p id="address3"></p>
                     <p id="rating3"></p>
@@ -59,7 +61,7 @@
 
             <div class="card" style="width: 20%;">
                 <div class="card-body">
-                    <h1 id="businessName4" class="card-title"></h1>
+                    <h4 id="businessName4" class="card-title"></h4>
                     <p id="phoneNumber4" class="card-subtitle mb-2 text-muted"></p>
                     <p id="address4"></p>
                     <p id="rating4"></p>
@@ -69,7 +71,7 @@
 
             <div class="card" style="width: 20%;">
                 <div class="card-body">
-                    <h1 id="businessName5" class="card-title"></h1>
+                    <h4 id="businessName5" class="card-title"></h4>
                     <p id="phoneNumber5" class="card-subtitle mb-2 text-muted"></p>
                     <p id="address5"></p>
                     <p id="rating5"></p>
@@ -77,15 +79,75 @@
                 </div>
             </div>
         </div>
+
+
+    <!-- This section is for Hotels -->
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">HOTELi - Top 5 Hotels for quick booking!</span>
+    </nav>
+
+    <div class="row">
+        <div class="card" style="width: 20%;">
+            <div class="card-body">
+                <h4 id="2businessName1" class="card-title"></h4>
+                </h4>
+                <p id="2phoneNumber1" class="card-subtitle mb-2 text-muted"></p>
+                <p id="2address1" class="card-text"></p>
+                <p id="2rating1" class="card-text"></p>
+                <img id=""><img src=""></img>
+            </div>
+        </div>
+        <div class="card" style="width: 20%;">
+            <div class="card-body">
+                <h4 id="2businessName2" class="card-title"></h4>
+                <p id="2phoneNumber2" class="card-subtitle mb-2 text-muted"></p>
+                <p id="2address2"></p>
+                <p id="2rating2"></p>
+                <img id=""><img src=""></img>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20%;">
+            <div class="card-body">
+                <h4 id="2businessName3" class="card-title"></h4>
+                <p id="2phoneNumber3" class="card-subtitle mb-2 text-muted"></p>
+                <p id="2address3"></p>
+                <p id="2rating3"></p>
+                <img id=""><img src=""></img>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20%;">
+            <div class="card-body">
+                <h4 id="2businessName4" class="card-title"></h4>
+                <p id="2phoneNumber4" class="card-subtitle mb-2 text-muted"></p>
+                <p id="2address4"></p>
+                <p id="2rating4"></p>
+                <img id=""><img src=""></img>
+            </div>
+        </div>
+
+        <div class="card" style="width: 20%;">
+            <div class="card-body">
+                <h4 id="2businessName5" class="card-title"></h4>
+                <p id="2phoneNumber5" class="card-subtitle mb-2 text-muted"></p>
+                <p id="2address5"></p>
+                <p id="2rating5"></p>
+                <img id=""><img src=""></img>
+            </div>
+        </div>
     </div>
 
-    This section is for events
+
+
+
+    <!-- This section is for Events -->
     <div class="container">
         <!-- ID's for these are:
 businessEvent -->
 
         <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">FOODi</span>
+            <span class="navbar-brand mb-0 h1">Local Events</span>
         </nav>
 
         <div class="row">
