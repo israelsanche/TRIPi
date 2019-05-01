@@ -1,3 +1,8 @@
+// Global Variables
+
+var locationQuery = "";
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
 var map = new mapboxgl.Map({
 container: 'map',
@@ -11,20 +16,22 @@ var geocoder = new MapboxGeocoder({
 
 $("#citytext").append(geocoder.onAdd(map));
 
-geocoder.query("New York");
+// geocoder.query("New York");
 geocoder.setPlaceholder("Set Location");
 geocoder.on("result", function(e){
     console.log(e.result);
+locationQuery = e.result.place_name;
+console.log(locationQuery);
 })
 
 var cityInput = ""
-var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-chloe&location=" + cityInput;
+var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-chloe&location=" + locationQuery;
 
 $("#city-click").on("click", function (event) {
     cityInput = $("#city-search").val()
     console.log($("#city-search").val());
     event.preventDefault();
-    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=" + cityInput;
+    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=" + locationQuery;
 
     $.ajax({
         url: myurl,
