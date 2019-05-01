@@ -1,3 +1,22 @@
+mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/mapbox/dark-v10'
+});
+
+var geocoder = new MapboxGeocoder({
+    accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl
+});
+
+$("#citytext").append(geocoder.onAdd(map));
+
+geocoder.query("New York");
+geocoder.setPlaceholder("Set Location");
+geocoder.on("result", function(e){
+    console.log(e.result);
+})
+
 var cityInput = ""
 var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=by-chloe&location=" + cityInput;
 
