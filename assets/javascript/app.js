@@ -24,17 +24,15 @@ locationQuery = e.result.place_name;
 console.log(locationQuery);
 })
 
-var cityInput = ""
-
 
 $("#city-click").on("click", function (event) {
-    cityInput = $("#city-search").val()
+   
     console.log($("#city-search").val());
     event.preventDefault();
-    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=" + cityInput;
-    var hotelurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotels&location=" + cityInput;
-    var eventurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=events&location=" + cityInput;
-var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=" + cityInput;
+    var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=" + locationQuery;
+    var hotelurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotels&location=" + locationQuery;
+    var eventurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=events&location=" + locationQuery;
+var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=" + locationQuery;
 
     $.ajax({
         url: myurl,
@@ -127,7 +125,7 @@ var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location="
 
     // Here we are building the URL we need to query the database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q="+ cityInput + "&units=imperial&appid=" + APIKey;
+      "q="+ locationQuery + "&units=imperial&appid=" + APIKey;
 
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
