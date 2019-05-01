@@ -141,16 +141,54 @@ var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location="
         // Log the resulting object
         console.log(weatherresponse);
 
-        // // Transfer content to HTML
-        // $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-        // $(".wind").text("Wind Speed: " + response.wind.speed);
-        // $(".humidity").text("Humidity: " + response.main.humidity);
-        // $(".temp").text("Temperature (F) " + response.main.temp);
+        // code to display weather on html here...
 
-        // // Log the data in the console as well
-        // console.log("Wind Speed: " + response.wind.speed);
-        // console.log("Humidity: " + response.main.humidity);
-        // console.log("Temperature (F): " + response.main.temp);
+
       });
+      //ZOMATO API//
+//   api key: d26b1d8dcb1755149c3453df8f881735 //
+
+// click function that's gonna trigger that call
+
+    event.preventDefault();
+    //grabbing value of the search input//
+    console.log("dude you're searching it up!");
+    var zomatourl = "https://developers.zomato.com/api/v2.1/search?entity_type=city" + locationQuery + "&apikey=d26b1d8dcb1755149c3453df8f881735"
+    $.ajax({
+        url: zomatourl,
+        method: "GET",
+        beforeSend: function (xhr) { xhr.setRequestHeader('user-key', 'd26b1d8dcb1755149c3453df8f881735'); },
+    }).then(function (zomatoresponse) {
+        console.log(zomatoresponse);
+        // code to display to html here...
+
+            $("#zomatobusinessName1").text(zomatoresponse.restaurants[0].restaurant.name);
+            // $("#zomatophoneNumber1").text(zomatoresponse.restaurants[0].restaurant.phone);
+            $("#zomatoaddress1").text(zomatoresponse.restaurants[0].restaurant.location.address);
+            $("#zomatorating1").text("Business is Rated: " + zomatoresponse.restaurants[0].restaurant.user_rating.aggregate_rating);
+
+            $("#zomatobusinessName2").text(zomatoresponse.restaurants[1].restaurant.name);
+            // $("#zomatophoneNumber2").text(zomatoresponse.businesses[1].phone);
+            $("#zomatoaddress2").text(zomatoresponse.restaurants[1].restaurant.location.address);
+            $("#zomatorating2").text("Business is Rated: " + zomatoresponse.restaurants[1].restaurant.user_rating.aggregate_rating);
+
+            $("#zomatobusinessName3").text(zomatoresponse.restaurants[2].restaurant.name);
+            // $("#zomatophoneNumber3").text(zomatoresponse.businesses[2].phone);
+            $("#zomatoaddress3").text(zomatoresponse.restaurants[2].restaurant.location.address);
+            $("#zomatorating3").text("Business is Rated: " + zomatoresponse.restaurants[2].restaurant.user_rating.aggregate_rating);
+
+            $("#zomatobusinessName4").text(zomatoresponse.restaurants[3].restaurant.name);
+            // $("#zomatophoneNumber4").text(zomatoresponse.businesses[3].phone);
+            $("#zomatoaddress4").text(zomatoresponse.restaurants[3].restaurant.location.address);
+            $("#zomatorating4").text("Business is Rated: " + zomatoresponse.restaurants[3].restaurant.user_rating.aggregate_rating);
+
+            $("#zomatobusinessName5").text(zomatoresponse.restaurants[4].restaurant.name);
+            // $("#zomatophoneNumber5").text(zomatoresponse.businesses[4].phone);
+            $("#zomatoaddress5").text(zomatoresponse.restaurants[4].restaurant.location.address);
+            $("#zomatorating5").text("Business is Rated: " + zomatoresponse.restaurants[4].restaurant.user_rating.aggregate_rating);
+
+    })
+
+
 
 });
