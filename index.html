@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Single AJAX</title>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -19,6 +20,7 @@
         <div class="jumbotron">
             <h1 class="display-4" align="center">TRIPPi</h1>
             <p align="center">Your Quick Reference Travel Companion!</p>
+            <h4 align="center" id="click-value"></h4>
             <form id="citytext" class="form-inline my-2 my-lg-0">
                 <input id="city-search" class="form-control mr-sm-2" type="search" placeholder="Food Preference?"
                     aria-label="Search">
@@ -30,9 +32,9 @@
         <nav class="navbar navbar-light bg-light">
             <span class="navbar-brand mb-0 h1">FOODi - Top 5 Restaurants from Yelp!</span>
         </nav>
-
+        <div class="container">
         <div class="row">
-            <div class="card" style="width: 20%;">
+            <div class="card" style="width: 100%;">
                 <div class="card-body">
                     <h4 id="businessName1" class="card-title"></h4>
                     </h4>
@@ -42,7 +44,7 @@
                     <img id=""><img src=""></img>
                 </div>
             </div>
-            <div class="card" style="width: 20%;">
+            <div class="card" style="width: 50%;">
                 <div class="card-body">
                     <h4 id="businessName2" class="card-title"></h4>
                     <p id="phoneNumber2" class="card-subtitle mb-2 text-muted"></p>
@@ -52,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="card" style="width: 20%;">
+            <div class="card" style="width: 50%;">
                 <div class="card-body">
                     <h4 id="businessName3" class="card-title"></h4>
                     <p id="phoneNumber3" class="card-subtitle mb-2 text-muted"></p>
@@ -62,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="card" style="width: 20%;">
+            <div class="card" style="width: 50%;">
                 <div class="card-body">
                     <h4 id="businessName4" class="card-title"></h4>
                     <p id="phoneNumber4" class="card-subtitle mb-2 text-muted"></p>
@@ -72,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="card" style="width: 20%;">
+            <div class="card" style="width: 50%;">
                 <div class="card-body">
                     <h4 id="businessName5" class="card-title"></h4>
                     <p id="phoneNumber5" class="card-subtitle mb-2 text-muted"></p>
@@ -81,6 +83,7 @@
                     <img id=""><img src=""></img>
                 </div>
             </div>
+        </div>
         </div>
 
         <!-- This section is for Restaurants -->
@@ -142,7 +145,7 @@
 
     <!-- This section is for Hotels -->
     <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">HOTELi - Top 5 Hotels for quick booking!</span>
+        <span class="navbar-brand mb-0 h1">SLEEPi - Top 5 Hotels for quick booking!</span>
     </nav>
 
     <div class="row">
@@ -250,6 +253,7 @@ businessEvent -->
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.11.0/firebase.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
         integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
         crossorigin="anonymous"></script>

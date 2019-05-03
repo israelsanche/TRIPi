@@ -5,8 +5,8 @@ var locationQuery = "";
 
 mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
 var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/dark-v10'
+    container: 'map',
+    style: 'mapbox://styles/mapbox/dark-v10'
 });
 
 var geocoder = new MapboxGeocoder({
@@ -18,21 +18,71 @@ $("#citytext").append(geocoder.onAdd(map));
 
 // geocoder.query("New York");
 geocoder.setPlaceholder("Set Location");
-geocoder.on("result", function(e){
+geocoder.on("result", function (e) {
     console.log(e.result);
-locationQuery = e.result.place_name;
-console.log(locationQuery);
+    locationQuery = e.result.place_name;
+    console.log(locationQuery);
 })
+// firebase for search history count here...
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyDso5WmgbX5NuJFUkvloBMBQvI351bN4DY",
+    authDomain: "trppi-51eee.firebaseapp.com",
+    databaseURL: "https://trppi-51eee.firebaseio.com",
+    projectId: "trppi-51eee",
+    storageBucket: "trppi-51eee.appspot.com",
+    messagingSenderId: "173011692765"
+};
+firebase.initializeApp(config);
+var database = firebase.database();
+  // Grabs user input
+  var initialValue = 1;
+
+  // Use the below variable clickCounter to keep track of the clicks.
+  var clickCounter = initialValue;
+
+ database.ref().on("value", function(snapshot) {
+  // We are now inside our .on function...
+
+  // Console.log the "snapshot" value (a point-in-time representation of the database)
+  console.log(snapshot.val());
+  // This "snapshot" allows the page to get the most current values in firebase.
+
+  // Change the value of our clickCounter to match the value in the database
+  clickCounter = snapshot.val().clickCount;
+
+  // Console Log the value of the clickCounter
+  console.log(clickCounter);
+
+  // Change the HTML using jQuery to reflect the updated clickCounter value
+  $("#click-value").text("TRIPPi has helped " + clickCounter + " Users! Search Your Travel!");
+  // Alternate solution to the above line
+  // $("#click-value").html(clickCounter);
+
+// If any errors are experienced, log them to console.
+}, function(errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
 
 
+$(document).ready()
 $("#city-click").on("click", function (event) {
-   
+    $(document).ready()
+    clickCounter++;
+  // Save new value to Firebase
+  database.ref().set({
+    clickCount: clickCounter
+  });
+
+  // Log the value of clickCounter
+  console.log(clickCounter);
+
     console.log($("#city-search").val());
     event.preventDefault();
     var myurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=food&location=" + locationQuery;
     var hotelurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=hotels&location=" + locationQuery;
     var eventurl = "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=events&location=" + locationQuery;
-var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=" + locationQuery;
+    var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=" + locationQuery;
 
     $.ajax({
         url: myurl,
@@ -120,35 +170,35 @@ var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location="
     });
 
 
-  
+
     var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
     // Here we are building the URL we need to query the database
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q="+ locationQuery + "&units=imperial&appid=" + APIKey;
+        "q=" + locationQuery + "&units=imperial&appid=" + APIKey;
 
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
-      url: queryURL,
-      method: "GET"
+        url: queryURL,
+        method: "GET"
     })
-      // We store all of the retrieved data inside of an object called "response"
-      .then(function(weatherresponse) {
+        // We store all of the retrieved data inside of an object called "response"
+        .then(function (weatherresponse) {
 
-        // Log the queryURL
-        console.log(queryURL);
+            // Log the queryURL
+            console.log(queryURL);
 
-        // Log the resulting object
-        console.log(weatherresponse);
+            // Log the resulting object
+            console.log(weatherresponse);
 
-        // code to display weather on html here...
+            // code to display weather on html here...
 
 
-      });
-      //ZOMATO API//
-//   api key: d26b1d8dcb1755149c3453df8f881735 //
+        });
+    //ZOMATO API//
+    //   api key: d26b1d8dcb1755149c3453df8f881735 //
 
-// click function that's gonna trigger that call
+    // click function that's gonna trigger that call
 
     event.preventDefault();
     //grabbing value of the search input//
@@ -162,30 +212,30 @@ var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location="
         console.log(zomatoresponse);
         // code to display to html here...
 
-            $("#zomatobusinessName1").text(zomatoresponse.restaurants[0].restaurant.name);
-            // $("#zomatophoneNumber1").text(zomatoresponse.restaurants[0].restaurant.phone);
-            $("#zomatoaddress1").text(zomatoresponse.restaurants[0].restaurant.location.address);
-            $("#zomatorating1").text("Business is Rated: " + zomatoresponse.restaurants[0].restaurant.user_rating.aggregate_rating);
+        $("#zomatobusinessName1").text(zomatoresponse.restaurants[0].restaurant.name);
+        // $("#zomatophoneNumber1").text(zomatoresponse.restaurants[0].restaurant.phone);
+        $("#zomatoaddress1").text(zomatoresponse.restaurants[0].restaurant.location.address);
+        $("#zomatorating1").text("Business is Rated: " + zomatoresponse.restaurants[0].restaurant.user_rating.aggregate_rating);
 
-            $("#zomatobusinessName2").text(zomatoresponse.restaurants[1].restaurant.name);
-            // $("#zomatophoneNumber2").text(zomatoresponse.businesses[1].phone);
-            $("#zomatoaddress2").text(zomatoresponse.restaurants[1].restaurant.location.address);
-            $("#zomatorating2").text("Business is Rated: " + zomatoresponse.restaurants[1].restaurant.user_rating.aggregate_rating);
+        $("#zomatobusinessName2").text(zomatoresponse.restaurants[1].restaurant.name);
+        // $("#zomatophoneNumber2").text(zomatoresponse.businesses[1].phone);
+        $("#zomatoaddress2").text(zomatoresponse.restaurants[1].restaurant.location.address);
+        $("#zomatorating2").text("Business is Rated: " + zomatoresponse.restaurants[1].restaurant.user_rating.aggregate_rating);
 
-            $("#zomatobusinessName3").text(zomatoresponse.restaurants[2].restaurant.name);
-            // $("#zomatophoneNumber3").text(zomatoresponse.businesses[2].phone);
-            $("#zomatoaddress3").text(zomatoresponse.restaurants[2].restaurant.location.address);
-            $("#zomatorating3").text("Business is Rated: " + zomatoresponse.restaurants[2].restaurant.user_rating.aggregate_rating);
+        $("#zomatobusinessName3").text(zomatoresponse.restaurants[2].restaurant.name);
+        // $("#zomatophoneNumber3").text(zomatoresponse.businesses[2].phone);
+        $("#zomatoaddress3").text(zomatoresponse.restaurants[2].restaurant.location.address);
+        $("#zomatorating3").text("Business is Rated: " + zomatoresponse.restaurants[2].restaurant.user_rating.aggregate_rating);
 
-            $("#zomatobusinessName4").text(zomatoresponse.restaurants[3].restaurant.name);
-            // $("#zomatophoneNumber4").text(zomatoresponse.businesses[3].phone);
-            $("#zomatoaddress4").text(zomatoresponse.restaurants[3].restaurant.location.address);
-            $("#zomatorating4").text("Business is Rated: " + zomatoresponse.restaurants[3].restaurant.user_rating.aggregate_rating);
+        $("#zomatobusinessName4").text(zomatoresponse.restaurants[3].restaurant.name);
+        // $("#zomatophoneNumber4").text(zomatoresponse.businesses[3].phone);
+        $("#zomatoaddress4").text(zomatoresponse.restaurants[3].restaurant.location.address);
+        $("#zomatorating4").text("Business is Rated: " + zomatoresponse.restaurants[3].restaurant.user_rating.aggregate_rating);
 
-            $("#zomatobusinessName5").text(zomatoresponse.restaurants[4].restaurant.name);
-            // $("#zomatophoneNumber5").text(zomatoresponse.businesses[4].phone);
-            $("#zomatoaddress5").text(zomatoresponse.restaurants[4].restaurant.location.address);
-            $("#zomatorating5").text("Business is Rated: " + zomatoresponse.restaurants[4].restaurant.user_rating.aggregate_rating);
+        $("#zomatobusinessName5").text(zomatoresponse.restaurants[4].restaurant.name);
+        // $("#zomatophoneNumber5").text(zomatoresponse.businesses[4].phone);
+        $("#zomatoaddress5").text(zomatoresponse.restaurants[4].restaurant.location.address);
+        $("#zomatorating5").text("Business is Rated: " + zomatoresponse.restaurants[4].restaurant.user_rating.aggregate_rating);
 
     })
 
