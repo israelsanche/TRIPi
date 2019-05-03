@@ -9,7 +9,7 @@
 display: inline-block;} */
 
 body {
-    background-image: url(http://services.travelsavers.com/AMGService.svc/REST/GetImage?ImageID=af246d65-0f7d-e711-9eb5-782bcb66a2f2&Width=450);
+    background-image: url(../images/background.jpg);
     background-size: cover;
 }
 

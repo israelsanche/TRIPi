@@ -22,7 +22,7 @@ $(document).ready(function () {
     mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
     var map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/mapbox/dark-v10',
+        style: 'mapbox://styles/mapbox/light-v10',
         zoom: 3
     });
 
@@ -38,9 +38,9 @@ $(document).ready(function () {
         trackUserLocation: true
     });
 
-    map.addControl(locator)
-
-    $("#citytext").append(geocoder.onAdd(map));
+    map.addControl(geocoder);
+    
+    map.addControl(locator);
 
     geocoder.setPlaceholder("Set Location");
 
