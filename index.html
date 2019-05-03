@@ -9,7 +9,6 @@
 
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
-
     <link rel="stylesheet" href="assets/css/style.css">
 
 </head>
@@ -20,242 +19,70 @@
             <h1 class="display-4" align="center">TRIPPi</h1>
             <p align="center">Your Quick Reference Travel Companion!</p>
             <form id="citytext" class="form-inline my-2 my-lg-0">
-                <input id="city-search" class="form-control mr-sm-2" type="search" placeholder="Food Preference?"
-                    aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="city-click">Search</button>
         </div>
-        <div id='map' style='width: 400px; height: 300px;'></div>
+        <div id='map' style='width: 100%; height: 300px;'></div>
 
         <!-- This section is for Restaurants -->
-        <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">FOODi - Top 5 Restaurants from Yelp!</span>
-        </nav>
-
-        <div class="row">
-            <div class="card" style="width: 20%;">
-                <div class="card-body">
-                    <h4 id="businessName1" class="card-title"></h4>
-                    </h4>
-                    <p id="phoneNumber1" class="card-subtitle mb-2 text-muted"></p>
-                    <p id="address1" class="card-text"></p>
-                    <p id="rating1" class="card-text"></p>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-            <div class="card" style="width: 20%;">
-                <div class="card-body">
-                    <h4 id="businessName2" class="card-title"></h4>
-                    <p id="phoneNumber2" class="card-subtitle mb-2 text-muted"></p>
-                    <p id="address2"></p>
-                    <p id="rating2"></p>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-
-            <div class="card" style="width: 20%;">
-                <div class="card-body">
-                    <h4 id="businessName3" class="card-title"></h4>
-                    <p id="phoneNumber3" class="card-subtitle mb-2 text-muted"></p>
-                    <p id="address3"></p>
-                    <p id="rating3"></p>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-
-            <div class="card" style="width: 20%;">
-                <div class="card-body">
-                    <h4 id="businessName4" class="card-title"></h4>
-                    <p id="phoneNumber4" class="card-subtitle mb-2 text-muted"></p>
-                    <p id="address4"></p>
-                    <p id="rating4"></p>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-
-            <div class="card" style="width: 20%;">
-                <div class="card-body">
-                    <h4 id="businessName5" class="card-title"></h4>
-                    <p id="phoneNumber5" class="card-subtitle mb-2 text-muted"></p>
-                    <p id="address5"></p>
-                    <p id="rating5"></p>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
+        <div id="yelpDiv">
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand mb-0 h1">FOODi - Top 5 Restaurants from Yelp!</span>
+            </nav>
+            <div class="row" id="yelp"></div>
         </div>
 
+
         <!-- This section is for Restaurants -->
-        <nav class="navbar navbar-light bg-light">
+        <div id="zomatoDiv">
+            <nav class="navbar navbar-light bg-light">
                 <span class="navbar-brand mb-0 h1">Zomato!</span>
             </nav>
-    
-            <div class="row">
-                <div class="card" style="width: 20%;">
+            <div class="row" id="zomato"></div>
+        </div>
+
+
+        <!-- This section is for Hotels -->
+        <div id="hotelDiv">
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand mb-0 h1">HOTELi - Top 5 Hotels for quick booking!</span>
+            </nav>
+        
+            <div class="row" id="yelpHotel"></div>
+        </div>
+
+
+
+
+
+        <!-- This section is for Events -->
+        <div id="eventsDiv">
+            <!-- ID's for these are businessEvent -->
+
+            <nav class="navbar navbar-light bg-light">
+                <span class="navbar-brand mb-0 h1">Local Events</span>
+            </nav>
+
+            <div class="row" id="events">
+                <div class="card" style="width: 18rem;">
                     <div class="card-body">
-                        <h4 id="zomatobusinessName1" class="card-title"></h4>
-                        </h4>
-                        <p id="zomatophoneNumber1" class="card-subtitle mb-2 text-muted"></p>
-                        <p id="zomatoaddress1" class="card-text"></p>
-                        <p id="zomatorating1" class="card-text"></p>
+                        <h1 id="businessEvent1" class="card-title"></h1>
+                        </h1>
+
                         <img id=""><img src=""></img>
                     </div>
                 </div>
-                <div class="card" style="width: 20%;">
-                    <div class="card-body">
-                        <h4 id="zomatobusinessName2" class="card-title"></h4>
-                        <p id="zomatophoneNumber2" class="card-subtitle mb-2 text-muted"></p>
-                        <p id="zomatoaddress2"></p>
-                        <p id="zomatorating2"></p>
-                        <img id=""><img src=""></img>
-                    </div>
-                </div>
-    
-                <div class="card" style="width: 20%;">
-                    <div class="card-body">
-                        <h4 id="zomatobusinessName3" class="card-title"></h4>
-                        <p id="zomatophoneNumber3" class="card-subtitle mb-2 text-muted"></p>
-                        <p id="zomatoaddress3"></p>
-                        <p id="zomatorating3"></p>
-                        <img id=""><img src=""></img>
-                    </div>
-                </div>
-    
-                <div class="card" style="width: 20%;">
-                    <div class="card-body">
-                        <h4 id="zomatobusinessName4" class="card-title"></h4>
-                        <p id="zomatophoneNumber4" class="card-subtitle mb-2 text-muted"></p>
-                        <p id="zomatoaddress4"></p>
-                        <p id="zomatorating4"></p>
-                        <img id=""><img src=""></img>
-                    </div>
-                </div>
-    
-                <div class="card" style="width: 20%;">
-                    <div class="card-body">
-                        <h4 id="zomatobusinessName5" class="card-title"></h4>
-                        <p id="zomatophoneNumber5" class="card-subtitle mb-2 text-muted"></p>
-                        <p id="zomatoaddress5"></p>
-                        <p id="zomatorating5"></p>
-                        <img id=""><img src=""></img>
-                    </div>
-                </div>
-            </div>
-
-    <!-- This section is for Hotels -->
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">HOTELi - Top 5 Hotels for quick booking!</span>
-    </nav>
-
-    <div class="row">
-        <div class="card" style="width: 20%;">
-            <div class="card-body">
-                <h4 id="2businessName1" class="card-title"></h4>
-                </h4>
-                <p id="2phoneNumber1" class="card-subtitle mb-2 text-muted"></p>
-                <p id="2address1" class="card-text"></p>
-                <p id="2rating1" class="card-text"></p>
-                <img id=""><img src=""></img>
-            </div>
-        </div>
-        <div class="card" style="width: 20%;">
-            <div class="card-body">
-                <h4 id="2businessName2" class="card-title"></h4>
-                <p id="2phoneNumber2" class="card-subtitle mb-2 text-muted"></p>
-                <p id="2address2"></p>
-                <p id="2rating2"></p>
-                <img id=""><img src=""></img>
-            </div>
         </div>
 
-        <div class="card" style="width: 20%;">
-            <div class="card-body">
-                <h4 id="2businessName3" class="card-title"></h4>
-                <p id="2phoneNumber3" class="card-subtitle mb-2 text-muted"></p>
-                <p id="2address3"></p>
-                <p id="2rating3"></p>
-                <img id=""><img src=""></img>
-            </div>
-        </div>
 
-        <div class="card" style="width: 20%;">
-            <div class="card-body">
-                <h4 id="2businessName4" class="card-title"></h4>
-                <p id="2phoneNumber4" class="card-subtitle mb-2 text-muted"></p>
-                <p id="2address4"></p>
-                <p id="2rating4"></p>
-                <img id=""><img src=""></img>
-            </div>
-        </div>
-
-        <div class="card" style="width: 20%;">
-            <div class="card-body">
-                <h4 id="2businessName5" class="card-title"></h4>
-                <p id="2phoneNumber5" class="card-subtitle mb-2 text-muted"></p>
-                <p id="2address5"></p>
-                <p id="2rating5"></p>
-                <img id=""><img src=""></img>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <!-- This section is for Events -->
-    <div class="container">
-        <!-- ID's for these are:
-businessEvent -->
-
-        <nav class="navbar navbar-light bg-light">
-            <span class="navbar-brand mb-0 h1">Local Events</span>
-        </nav>
-
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h1 id="businessEvent1" class="card-title"></h1>
-                    </h1>
-
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h1 id="businessEvent2" class="card-title"></h1>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h1 id="businessEvent3" class="card-title"></h1>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h1 id="businessEvent4" class="card-title"></h1>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h1 id="businessEvent5" class="card-title"></h1>
-                    <img id=""><img src=""></img>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
-        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
-        crossorigin="anonymous"></script>
-        <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
-        <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.css' type='text/css' />
-    <script src="assets/javascript/app.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+            integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+            crossorigin="anonymous"></script>
+        <script
+            src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
+        <link rel='stylesheet'
+            href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.css'
+            type='text/css' />
+        <script src="assets/javascript/app.js"></script>
 
 </body>
 

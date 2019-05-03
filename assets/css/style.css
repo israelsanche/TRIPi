@@ -12,11 +12,19 @@ body {
     background-image: url(http://services.travelsavers.com/AMGService.svc/REST/GetImage?ImageID=af246d65-0f7d-e711-9eb5-782bcb66a2f2&Width=450);
     background-size: cover;
 }
+
 .navbar, .card {
     opacity: .5;
  font-style: bold;
 }
+
 .card {
     opacity: .75;
  font-style: bold;
 }
+
+.marker {
+
+    cursor: pointer;
+
+    }
