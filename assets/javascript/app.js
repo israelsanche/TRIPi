@@ -42,7 +42,6 @@ $(document).ready(function () {
 
     $("#citytext").append(geocoder.onAdd(map));
 
-    // geocoder.query("New York");
     geocoder.setPlaceholder("Set Location");
 
     geocoder.on("result", function (e) {
@@ -56,30 +55,6 @@ $(document).ready(function () {
         yelp("events", locationQuery, "#events", "#eventsDiv", "yellow");
         zomato(geoQuery);
 
-        var weatherurl = "https://weather-ydn-yql.media.yahoo.com/forecastrss?location=" + locationQuery;
-        var APIKey = "166a433c57516f51dfab1f7edaed8413";
-
-        // Here we are building the URL we need to query the database
-        var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-            "q=" + locationQuery + "&units=imperial&appid=" + APIKey;
-
-        // Here we run our AJAX call to the OpenWeatherMap API
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        })
-            // We store all of the retrieved data inside of an object called "response"
-            .then(function (weatherresponse) {
-
-                // Log the queryURL
-                console.log(queryURL);
-
-                // Log the resulting object
-                console.log(weatherresponse);
-
-                // code to display weather on html here...
-
-            });
     });
 
     locator.on("geolocate", function (e) {
