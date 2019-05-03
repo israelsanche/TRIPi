@@ -22,3 +22,9 @@ body {
     opacity: .75;
  font-style: bold;
 }
+
+.marker {
+
+    cursor: pointer;
+
+    }
