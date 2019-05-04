@@ -4,11 +4,16 @@
 <head>
     <meta charset="utf-8">
     <title>TRIPPi</title>
+    <!-- boostsrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- mapbox -->
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.54.0/mapbox-gl.css' rel='stylesheet' />
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Rajdhani:500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Economica" rel="stylesheet">
+    <!-- css -->
     <link rel="stylesheet" href="assets/css/style.css">
     
 </head>
@@ -16,15 +21,17 @@
 <body>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="display-4" align="center">TRIPPi</h1>
-            <p align="center">Your Quick Reference Travel Companion!</p>
-            <form id="citytext" class="form-inline my-2 my-lg-0">
+            <h1 class="display-4" align="center">T R I P P i</h1>
+            <h4 align="center">a one-stop reference for all of your traveling needs</h4>
+            <!-- <button style="text-align:center; margin:auto;">Get Started</button> -->
+            <h4 align="center">search for restaurants, hotels, and events near your location</h4>
+            <form align="center" id="citytext" class="form-inline my-2 my-lg-0">
         </div>
         <div id='map' style='width: 100%; height: 300px;'></div>
 
         <!-- This section is for Restaurants -->
         <div id="yelpDiv">
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar transparent navbar-inverse">
                 <span class="navbar-brand mb-0 h1">FOODi - Top 5 Restaurants from Yelp!</span>
             </nav>
             <div class="row" id="yelp"></div>
@@ -33,7 +40,7 @@
 
         <!-- This section is for Restaurants -->
         <div id="zomatoDiv">
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar transparent navbar-inverse" id="bg-light">
                 <span class="navbar-brand mb-0 h1">Zomato!</span>
             </nav>
             <div class="row" id="zomato"></div>
@@ -42,7 +49,7 @@
 
         <!-- This section is for Hotels -->
         <div id="hotelDiv">
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar transparent navbar-inverse">
                 <span class="navbar-brand mb-0 h1">HOTELi - Top 5 Hotels for quick booking!</span>
             </nav>
         
@@ -56,22 +63,27 @@
         <!-- This section is for Events -->
         <div id="eventsDiv">
             <!-- ID's for these are businessEvent -->
-
-            <nav class="navbar navbar-light bg-light">
+            <nav class="navbar transparent navbar-inverse">
                 <span class="navbar-brand mb-0 h1">Local Events</span>
             </nav>
 
-            <div class="row" id="events">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h1 id="businessEvent1" class="card-title"></h1>
-                        </h1>
-
-                        <img id=""><img src=""></img>
-                    </div>
-                </div>
+            <div class="row" id="events"></div>
         </div>
-
+        <div class="otherInfo" id="links">
+            <!-- other links -->
+            <div class="table">
+                <ul>
+                    <p>About Us <br>
+                        Contact <br>
+                        Press <br>
+                        FAQ <br>
+                    </p>
+                </ul>
+                <!-- footer -->
+                <footer id="copyright">&copy;Tyler,Kelen, Israel, LLC
+                </footer>
+            </div>
+        </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.0.0/mapbox-gl-geocoder.min.js'></script>
