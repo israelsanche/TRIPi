@@ -1,19 +1,36 @@
-@import url('https://fonts.googleapis.com/css?family=Anton|Libre+Barcode+39|Lora');
+/* @import url('https://fonts.googleapis.com/css?family=Anton|Libre+Barcode+39|Lora'); */
+.table, #copyright {
+    margin: 0 auto;
+    color: white;
+}
+.navbar.transparent {
+    background-color: none;
+}
+
+.jumbotron, body, .otherInfo {
+    font-family: 'Rajdhani', sans-serif;
+}
 
 .jumbotron {
-    background-image: url("http://farm5.static.flickr.com/4079/4906277577_413bebdf7f.jpg");
-    background-size: cover;
-    font-family: 'anton', sans-serif; color: rgb(205, 205, 206);
+    margin-bottom: 0px;
+    background: none;
 }
-/* .clear {
-display: inline-block;} */
+
+.display-4 {
+    font-size: 12rem;
+    transform: skewY(-5deg) translateY(-5%);
+}
+
+#city-search {
+float: right;
+}
 
 body {
     background-image: url(../images/background.jpg);
     background-size: cover;
 }
 
-.navbar, .card {
+.card {
     opacity: .5;
  font-style: bold;
 }
@@ -23,8 +40,32 @@ body {
  font-style: bold;
 }
 
+#map {
+    float: right;
+}
+
+h2, h4 {
+    font-family: 'Economica', sans-serif;
+}
+h4 {
+    transform: skewY(-5deg) translateY(-240%);
+}
+
+#copyright, #links{
+    margin: auto;
+    text-align: center;
+    color: white;
+    box-sizing: border-box;
+    /* background-color; */
+}
+
 .marker {
 
     cursor: pointer;
 
+    }
+
+#citytext {
+        margin: 0 auto; 
+        width:250px;
     }
