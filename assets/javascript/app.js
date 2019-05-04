@@ -16,12 +16,30 @@ $(document).ready(function () {
         'left': [markerRadius, (markerHeight - markerRadius) * -1],
         'right': [-markerRadius, (markerHeight - markerRadius) * -1]
     };
+    var useCounter = 0
     // hides divs by default, displayed when a search returns results
     $("#yelpDiv").hide();
     $("#zomatoDiv").hide();
     $("#hotelDiv").hide();
     $("#eventsDiv").hide();
-    
+
+    var firebaseConfig = {
+        apiKey: "AIzaSyDumijZQv9WaghMptWmykuxs6zBuK1ncf8",
+        authDomain: "trippicounter.firebaseapp.com",
+        databaseURL: "https://trippicounter.firebaseio.com",
+        projectId: "trippicounter",
+        storageBucket: "trippicounter.appspot.com",
+        messagingSenderId: "670973636297",
+        appId: "1:670973636297:web:611c1dcd28f78bef"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      var database = firebase.database();
+
+      database.ref().on("value", function(snapshot){
+        console.log(snapshot.val());
+        useCounter = snapshot.val().count;
+      });
     // Mapbox configuration, adds map to map div, adds geolocate and geocoder controls
     mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
     var map = new mapboxgl.Map({
@@ -60,6 +78,11 @@ $(document).ready(function () {
         yelp("events", locationQuery, "#events", "#eventsDiv", "yellow");
         zomato(geoQuery);
 
+        useCounter ++;
+        database.ref().set({
+            count: useCounter
+        });
+
     });
 
     // Event listener for geolocate. 
@@ -70,8 +93,13 @@ $(document).ready(function () {
         yelp("restaurants", geoQuery, "#yelp", "#yelpDiv", "red");
         yelp("hotels", geoQuery, "#yelpHotel", "#hotelDiv", "purple");
         yelp("events", geoQuery, "#events", "#eventsDiv", "yellow");
-
+        
+        useCounter ++;
+        database.ref().set({
+            count: useCounter
+        });
     });
+    
 
 
     // zomato API handler takes an array of coordinates longitude first
@@ -181,4 +209,6 @@ $(document).ready(function () {
         marker.addTo(map);
         marker.setPopup(popup);
     }
+
+
 });
