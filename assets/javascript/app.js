@@ -37,8 +37,8 @@ $(document).ready(function () {
       var database = firebase.database();
 
       database.ref().on("value", function(snapshot){
-        console.log(snapshot.val());
         useCounter = snapshot.val().count;
+        $("#searches").text("Searches worldwide: "+snapshot.val().count)
       });
     // Mapbox configuration, adds map to map div, adds geolocate and geocoder controls
     mapboxgl.accessToken = 'pk.eyJ1IjoidHlsZXItbGFycmFiZWUiLCJhIjoiY2p1dnU1bjh5MDVrNDQ0bGoyNWtreWRnZiJ9.eF1RC1zYSNU6iDVUE2FIqw';
